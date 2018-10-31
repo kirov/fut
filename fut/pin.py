@@ -35,7 +35,7 @@ class Pin(object):
 
         self.sku = sku or re.search('enums.SKU.FUT="(.+?)"', rc).group(1)
         self.rel = release_type
-        self.gid = re.search('gid:([0-9]+?)', rc).group(1)
+        self.gid = int(re.search('gid:([0-9]+?)', rc).group(1))
         self.plat = 'web'  # where is it? WEB:?
         self.et = re.search('et:"(.+?)"', rc).group(1)
         self.pidt = re.search('pidt:"(.+?)"', rc).group(1)
@@ -49,7 +49,7 @@ class Pin(object):
         self.r.headers['x-ea-game-id-type'] = self.tidt
         self.r.headers['x-ea-taxv'] = self.taxv
 
-        self.custom = {"networkAccess": "G"}  # wifi?
+        self.custom = {"networkAccess": "W"}  # wifi?
         # TODO?: full boot process when there is no session (boot start)
 
         self.custom['service_plat'] = platform[:3]
@@ -108,13 +108,13 @@ class Pin(object):
             "custom": self.custom,
             "et": self.et,
             "events": events,
-            "gid": self.gid,  # convert to int?
+            "gid": self.gid,
             "is_sess": self.sid != '',
             "loc": "en_US",
             "plat": self.plat,
             "rel": self.rel,
             "sid": self.sid,
-            "taxv": self.taxv,  # convert to float?
+            "taxv": self.taxv,
             "tid": self.sku,
             "tidt": self.tidt,
             "ts_post": self.__ts(),
