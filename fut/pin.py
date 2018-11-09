@@ -53,7 +53,7 @@ class Pin(object):
         # TODO?: full boot process when there is no session (boot start)
 
         self.custom['service_plat'] = platform[:3]
-        self.s = 2  # event id  |  before "was sent" without session/persona/nucleus id so we can probably omit
+        self.s = 1  # event id  |  before "was sent" without session/persona/nucleus id so we can probably omit
 
     def __ts(self):
         # TODO: add ability to random something
