@@ -1104,7 +1104,7 @@ class Core(object):
                 return False  # TODO: add exceptions
         data = {'bid': bid}
         try:
-            rc = self.__request__(method, url, data=json.dumps(data), params={'sku_b': self.sku_b}, fast=fast)[
+            rc = self.__request__(method, url, data=json.dumps(data), params={'client': 'webcomp'}, fast=fast)[
                 'auctionInfo'][0]
         except PermissionDenied:  # too slow, somebody took it already :-(
             return False
