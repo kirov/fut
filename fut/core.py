@@ -1308,7 +1308,7 @@ class Core(object):
 
         # TODO: auto send to tradepile
         data = {'buyNowPrice': buy_now, 'startingBid': bid, 'duration': duration, 'itemData': {'id': item_id}}
-        rc = self.__request__(method, url, data=json.dumps(data), params={'sku_b': self.sku_b})
+        rc = self.__request__(method, url, data=json.dumps(data))
         if not fast:  # tradeStatus check like webapp do
             self.tradeStatus(rc['id'])
         return rc['id']
